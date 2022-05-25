@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700,500");
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.desktop-6 {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  width: 100%;
+}
+
+/*# sourceMappingURL=SignInPage.css.map */
