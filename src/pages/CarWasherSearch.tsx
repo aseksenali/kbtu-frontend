@@ -23,14 +23,14 @@ const LeftSide = styled.div`
   padding: 1.5em;
   grid-area: left;
   z-index: 1;
+  overflow-y: scroll;
 `
 const RightSide = styled.div`
   grid-area: right;
 `
 
 const CarWasherSearch = () => {
-    const {headerRef} = useHeader()
-    const size = useSize(headerRef)
+    const {size} = useHeader()
     const carWashers = useAppSelector(selectCarWashers)
 
     const dispatch = useAppDispatch()

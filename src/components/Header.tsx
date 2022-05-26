@@ -24,6 +24,7 @@ const Button = styled.button`
   border: 1px solid var(--endeavour-2);
   border-radius: 10px;
   transition: all .1s ease-in-out;
+  white-space: nowrap;
   &:hover {
     cursor: pointer;
     background-color: var(--endeavour-2);

@@ -32,9 +32,9 @@ const BottomWrapper = styled.div`
 const ImageList = styled.div`
   display: flex;
   justify-content: center;
-  white-space: nowrap;
-  width: 60%;
+  width: 100%;
   column-gap: 1.5em;
+  flex-wrap: nowrap;
 
   & > img {
     display: inline-block;
@@ -60,10 +60,17 @@ const Button = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  
+
   &:disabled {
     cursor: auto;
   }
+`
+
+const ImageListWrapper = styled.div`
+  display: flex;
+  width: 60%;
+  white-space: nowrap;
+  flex-wrap: nowrap;
 `
 
 const ImageCarousel = (props: ImageCarouselPropsType) => {
@@ -91,20 +98,22 @@ const ImageCarousel = (props: ImageCarouselPropsType) => {
                             fill="black" stroke="#465564"/>
                     </Arrow>
                 </Button>
-                <ImageList>
-                    {nextIndex > lastIndex && prevIndex - 1 >= 0 &&
-                        <img src={props.images[prevIndex - 1]} onClick={onImageClick(prevIndex - 1)}
-                             alt={`${prevIndex - 1}`}/>}
-                    {prevIndex >= 0 &&
-                        <img src={props.images[prevIndex]} onClick={onImageClick(prevIndex)} alt={`${prevIndex}`}/>}
-                    <img src={props.images[active]} className={"active"} onClick={onImageClick(active)}
-                         alt={`${active}`}/>
-                    {nextIndex <= lastIndex &&
-                        <img src={props.images[nextIndex]} onClick={onImageClick(nextIndex)} alt={`${nextIndex}`}/>}
-                    {prevIndex < 0 && nextIndex + 1 <= lastIndex &&
-                        <img src={props.images[nextIndex + 1]} onClick={onImageClick(nextIndex + 1)}
-                             alt={`${nextIndex + 1}`}/>}
-                </ImageList>
+                <ImageListWrapper>
+                    <ImageList>
+                        {nextIndex > lastIndex && prevIndex - 1 >= 0 &&
+                            <img src={props.images[prevIndex - 1]} onClick={onImageClick(prevIndex - 1)}
+                                 alt={`${prevIndex - 1}`}/>}
+                        {prevIndex >= 0 &&
+                            <img src={props.images[prevIndex]} onClick={onImageClick(prevIndex)} alt={`${prevIndex}`}/>}
+                        <img src={props.images[active]} className={"active"} onClick={onImageClick(active)}
+                             alt={`${active}`}/>
+                        {nextIndex <= lastIndex &&
+                            <img src={props.images[nextIndex]} onClick={onImageClick(nextIndex)} alt={`${nextIndex}`}/>}
+                        {prevIndex < 0 && nextIndex + 1 <= lastIndex &&
+                            <img src={props.images[nextIndex + 1]} onClick={onImageClick(nextIndex + 1)}
+                                 alt={`${nextIndex + 1}`}/>}
+                    </ImageList>
+                </ImageListWrapper>
                 <Button onClick={onForwardArrowClick} disabled={nextIndex > lastIndex}>
                     <Arrow width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg"
                            className={nextIndex > lastIndex ? 'disabled' : ''}>

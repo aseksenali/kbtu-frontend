@@ -66,8 +66,7 @@ const CarWasherDetails = () => {
         }
     }, [activeCarWasher, id, location])
 
-    const {headerRef} = useHeader()
-    const size = useSize(headerRef)
+    const {size} = useHeader()
 
     const breadcrumbsTheme = createTheme({
         components: {

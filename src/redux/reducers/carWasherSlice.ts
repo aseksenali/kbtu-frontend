@@ -57,6 +57,166 @@ export const fetchCarWashers = createAsyncThunk<Array<CarWasher>>(
             },
             telephone: "77470646867",
             instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
+        } as CarWasher, {
+            id: uuidv4(),
+            address: {house: "29/1", street: "Dostyk"},
+            isLiked: true,
+            name: "Car washer name",
+            price: 2000,
+            rating: 4.9,
+            distance: 1.4,
+            workingHours: {start: {hours: 9, minutes: 0}, end: {hours: 18, minutes: 0}},
+            photo: [photo1, photo2, photo1, photo2, photo1, photo2, photo1],
+            coordinates: {
+                longitude: 76.9486100,
+                latitude: 43.2566700
+            },
+            telephone: "77470646867",
+            instagram: "https://www.instagram.com/bubbles_carwash2022/"
         } as CarWasher]);
     }
 )
