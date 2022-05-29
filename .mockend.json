@@ -1,6 +1,6 @@
 {
   "Post": {
-    "id": { "uuid": {}},
+    "id": "uuid",
     "comments": {
       "hasMany": "Comment"
     }
