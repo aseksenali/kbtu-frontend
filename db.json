@@ -1,5 +1,5 @@
 {
-  "Post": {
+  "CarWasher": {
     "id": "uuid",
     "comments": {
       "hasMany": "Comment"
