@@ -1,5 +1,5 @@
-import {RefObject, useLayoutEffect, useState} from "react";
-import useResizeObserver from "@react-hook/resize-observer";
+import { RefObject, useLayoutEffect, useState } from 'react'
+import useResizeObserver from '@react-hook/resize-observer'
 
 const useSize = (target: RefObject<HTMLElement>) => {
     const [size, setSize] = useState<DOMRect | undefined>(undefined)
@@ -15,4 +15,4 @@ const useSize = (target: RefObject<HTMLElement>) => {
     return size
 }
 
-export default useSize;
+export default useSize

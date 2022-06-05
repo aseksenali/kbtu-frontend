@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import CarWasherCard from "../components/CarWasherCard";
-import {fetchCarWashers, selectCarWashers, toggleLike} from "../redux/reducers/carWasherSlice";
-import Map, {MapRef, Marker, ViewStateChangeEvent} from "react-map-gl";
-import React, {useEffect, useRef, useState} from "react";
-import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {generatePath, useNavigate} from "react-router-dom";
-import useSize from "../hooks/useSize";
-import {useHeader} from "./MainPage";
+import styled from 'styled-components'
+import CarWasherCard from '../components/CarWasherCard/CarWasherCard'
+import Map, { MapRef, Marker, ViewStateChangeEvent } from 'react-map-gl'
+import React, { useEffect, useRef, useState } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
+import { useHeader } from './MainPage'
+import { useGetAllCarWashersQuery, useToggleLikeMutation } from '../redux/reducers/carWasherSlice'
+import { useAppDispatch } from '../hooks/redux'
+import { resetCurrentReservation } from '../redux/reducers/reservationSlice'
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYXNldHNla3NlbmFsaSIsImEiOiJjbDNoY2RjdTEwdDg3M2NuMDE3MDh0b2NlIn0.UwJehq2jaxBQtlu6OLwcwg';
-const MAP_STYLE = 'mapbox://styles/asetseksenali/cl3hcu6j4000s14qfiwxo2hzz';
+const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiYXNldHNla3NlbmFsaSIsImEiOiJjbDNoY2RjdTEwdDg3M2NuMDE3MDh0b2NlIn0.UwJehq2jaxBQtlu6OLwcwg'
+const MAP_STYLE = 'mapbox://styles/asetseksenali/cl3hcu6j4000s14qfiwxo2hzz'
 
 const MainPart = styled.div`
   display: grid;
@@ -30,44 +30,49 @@ const RightSide = styled.div`
 `
 
 const CarWasherSearch = () => {
-    const {size} = useHeader()
-    const carWashers = useAppSelector(selectCarWashers)
-
+    const { size } = useHeader()
     const dispatch = useAppDispatch()
+    const { data: carWashers, isLoading, error } = useGetAllCarWashersQuery()
+    const [toggleLiked, { isLoading: isUpdating }] = useToggleLikeMutation()
     const navigate = useNavigate()
-
-    const mapRef = useRef<MapRef>(null);
+    const mapRef = useRef<MapRef>(null)
     const [viewState, setViewState] = useState({
         longitude: 76.9286100,
         latitude: 43.2566700,
-        zoom: 11
-    });
+        zoom: 11,
+    })
 
-    useEffect(() => {
-        dispatch(fetchCarWashers())
-    }, [dispatch])
+    const toggleLike = (id: string) => async () => {
+        const carWasher = carWashers && carWashers.find(carWasher => carWasher.id === id)
+        carWasher && await toggleLiked({ id, isLiked: !carWasher.isLiked }).unwrap()
+    }
 
     const onCarWasherClick = (id: string) => () => {
-        navigate(generatePath(":id", {id}))
+        navigate(generatePath(':id', { id }))
     }
 
     const handleMove = (evt: ViewStateChangeEvent) => {
-        setViewState(evt.viewState);
+        setViewState(evt.viewState)
     }
 
+    useEffect(() => {
+        dispatch(resetCurrentReservation())
+    }, [dispatch])
+
     return (
-        <MainPart style={{height: `calc(${window.innerHeight}px - ${size ? size.top + size.bottom : 0}px)`}}>
-            <LeftSide style={{boxShadow: 'rgba(0, 0, 0, .25) 6px 10px 7px'}}>
-                {carWashers.map((carWasher) => <CarWasherCard {...carWasher} key={carWasher.id}
-                                                              toggleLiked={() => dispatch(toggleLike(carWasher.id))}
-                                                              onClick={onCarWasherClick(carWasher.id)}/>)}
+        <MainPart
+            style={ { height: `calc(${ window.innerHeight }px - ${ size ? size.top + size.bottom : 0 }px)` } }>
+            <LeftSide style={ { boxShadow: 'rgba(0, 0, 0, .25) 6px 10px 7px' } }>
+                { carWashers && carWashers.map((carWasher) => <CarWasherCard { ...carWasher } key={ carWasher.id }
+                                                                             toggleLiked={ toggleLike(carWasher.id) }
+                                                                             onClick={ onCarWasherClick(carWasher.id) }/>) }
             </LeftSide>
             <RightSide>
-                <Map {...viewState} ref={mapRef} attributionControl={false} onMove={handleMove} reuseMaps
-                     mapboxAccessToken={MAPBOX_ACCESS_TOKEN} mapStyle={MAP_STYLE}>
-                    {carWashers.map((carWasher) => (
-                        <Marker style={{cursor: "pointer"}}{...carWasher.coordinates} key={carWasher.id}
-                                anchor={"bottom"} onClick={onCarWasherClick(carWasher.id)}>
+                <Map { ...viewState } ref={ mapRef } attributionControl={ false } onMove={ handleMove } reuseMaps
+                     mapboxAccessToken={ MAPBOX_ACCESS_TOKEN } mapStyle={ MAP_STYLE }>
+                    { carWashers && carWashers.map((carWasher) => (
+                        <Marker style={ { cursor: 'pointer' } }{ ...carWasher.coordinates } key={ carWasher.id }
+                                anchor={ 'bottom' } onClick={ onCarWasherClick(carWasher.id) }>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -75,11 +80,11 @@ const CarWasherSearch = () => {
                                     fill="black"/>
                             </svg>
                         </Marker>
-                    ))}
+                    )) }
                 </Map>
             </RightSide>
         </MainPart>
     )
 }
 
-export default CarWasherSearch;
+export default CarWasherSearch

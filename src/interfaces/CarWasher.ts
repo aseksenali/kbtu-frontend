@@ -1,4 +1,4 @@
-import {Duration} from "../helpers/dateHelper";
+import { Duration } from '../helpers/dateHelper'
 
 export type Address = {
     street: string,
@@ -7,7 +7,7 @@ export type Address = {
 
 export type CarWasher = {
     id: string
-    isLiked: boolean
+    isLiked?: boolean
     name: string
     description?: string
     address: Address

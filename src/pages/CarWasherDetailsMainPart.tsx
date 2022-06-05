@@ -1,10 +1,9 @@
-import CarWasherDetailsCard from "../components/CarWasherDetailsCard";
-import ImageCarousel from "../components/ImageCarousel";
-import React, {useRef} from "react";
-import {toggleLike} from "../redux/reducers/carWasherSlice";
-import {useAppDispatch} from "../hooks/redux";
-import {useActiveCarWasher} from "./CarWasherDetails";
-import styled from "styled-components";
+import CarWasherDetailsCard from '../components/CarWasherDetailsCard/CarWasherDetailsCard'
+import ImageCarousel from '../components/ImageCarousel'
+import React, { useRef } from 'react'
+import styled from 'styled-components'
+import { useActiveCarWasher } from '../hooks/useActiveCarWasher'
+import { useToggleLikeMutation } from '../redux/reducers/carWasherSlice'
 
 const LeftSide = styled.div`
   display: inline-flex;
@@ -27,21 +26,23 @@ const MainPart = styled.div`
 
 
 const CarWasherDetailsMainPart = () => {
-    const dispatch = useAppDispatch()
     const cardRef = useRef<HTMLDivElement>(null)
-    const toggleLiked = (id: string) => () => {
-        dispatch(toggleLike(id))
+    const [toggleLiked, { isLoading: isUpdating }] = useToggleLikeMutation()
+    const { activeCarWasher, isLoading, error } = useActiveCarWasher()
+
+    const toggleLike = () => {
+        activeCarWasher && toggleLiked({ id: activeCarWasher.id, isLiked: !activeCarWasher.isLiked })
     }
-    const {activeCarWasher} = useActiveCarWasher()
 
     return (
         <MainPart>
             <LeftSide>
-                {activeCarWasher && <CarWasherDetailsCard {...activeCarWasher} ref={cardRef}
-                                                          toggleLiked={toggleLiked(activeCarWasher.id)}/>}
+                { activeCarWasher &&
+                    <CarWasherDetailsCard { ...activeCarWasher } isLiked={ activeCarWasher.isLiked } ref={ cardRef }
+                                          toggleLiked={ toggleLike }/> }
             </LeftSide>
             <RightSide>
-                {activeCarWasher && <ImageCarousel cardRef={cardRef} images={activeCarWasher.photo}/>}
+                { activeCarWasher && <ImageCarousel cardRef={ cardRef } images={ activeCarWasher.photo }/> }
             </RightSide>
         </MainPart>
     )

@@ -1,12 +1,18 @@
-import {Dispatch, SetStateAction} from "react";
-
-export type Authentication = {
-    username: string,
-    role: string,
-    profilePicture: string,
+interface RefreshTokenAuthenticationRequest {
+    refreshToken: string
 }
 
-export type AuthenticationContext = {
-    auth?: Authentication,
-    setAuth: Dispatch<SetStateAction<Authentication | undefined>>
+interface UserInfoRequest {
+    accessToken: string
+}
+
+interface PasswordAuthenticationRequest {
+    username: string,
+    password: string
+}
+
+export type {
+    PasswordAuthenticationRequest,
+    RefreshTokenAuthenticationRequest,
+    UserInfoRequest
 }

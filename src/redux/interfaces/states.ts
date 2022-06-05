@@ -1,16 +1,27 @@
-import {Tokens} from "./authentication";
-import {CarWasher} from "../../interfaces/CarWasher";
+import { CreateReservation } from '../../interfaces/Reservation'
 
-type UserStoreState = {
-    tokens?: Tokens,
-    status: 'idle' | 'loading' | 'succeeded' | 'failed'
+type Tokens = {
+    accessToken: string,
+    refreshToken: string
 }
 
-type CarWasherStoreState = {
-    activeCarWasher?: CarWasher
-    carWashers: Array<CarWasher>
-    status: 'idle' | 'loading' | 'succeeded' | 'failed'
+type UserInfo = {
+    sub: string,
+    roles: string[],
+    name: string,
+    phone_number: string,
+    email: string,
+    picture: string
 }
 
+interface UserStoreState {
+    isAuthenticated: boolean,
+    tokens?: Tokens
+}
 
-export type {UserStoreState, CarWasherStoreState}
+interface ReservationStoreState {
+    currentReservation: Partial<CreateReservation> | undefined,
+    isUpdate: boolean
+}
+
+export type { ReservationStoreState, UserStoreState, Tokens, UserInfo }

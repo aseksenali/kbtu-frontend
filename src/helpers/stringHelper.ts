@@ -1,5 +1,5 @@
-import {DateHelper, Duration} from "./dateHelper";
-import {Address} from "../interfaces/CarWasher";
+import { DateHelper, Duration } from './dateHelper'
+import { Address } from '../interfaces/CarWasher'
 
 const forEachWord = (fn: (a: string) => string, str: string, joinCharacter = ' '): string => {
     return str
@@ -18,15 +18,15 @@ const labelize = (str: string): string => {
     return forEachWord((str) => {
         return str.toLowerCase()
     }, str, '_')
-        .replaceAll(/\W/ig, "")
+        .replaceAll(/\W/ig, '')
 }
 
-const formatWorkTime = ({start, end}: Duration): string => {
-    return `${DateHelper.convertToString(start)}-${DateHelper.convertToString(end)}`
+const formatWorkTime = ({ start, end }: Duration): string => {
+    return `${ DateHelper.convertToString(start) }-${ DateHelper.convertToString(end) }`
 }
 
-const formatAddress = ({street, house}: Address): string => {
-    return `${street}, ${house}`
+const formatAddress = ({ street, house }: Address): string => {
+    return `${ street }, ${ house }`
 }
 
 const formatPhoneNumber = (number: string) => {
@@ -46,4 +46,4 @@ const StringHelper = {
     formatPhoneNumber,
 }
 
-export default StringHelper;
+export default StringHelper
